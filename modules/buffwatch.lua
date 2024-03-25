@@ -165,35 +165,26 @@ pfUI:RegisterModule("buffwatch", "vanilla:tbc", function ()
     local frame = _G[framename] or CreateFrame("Button", framename, parent)
     frame:EnableMouse(1)
     frame:Hide()
-    frame:SetPoint("BOTTOM", 0, (bar-1)*(height+2*border+1))
+    frame:SetPoint("BOTTOM", (bar-1)*(height+2*border+1),0)
+    
     frame:SetWidth(width)
     frame:SetHeight(height)
 
     frame.bar = CreateFrame("StatusBar", "pfBuffBar" .. bar, frame)
     frame.bar:SetPoint("TOPLEFT", frame, "TOPLEFT", height+1, 0)
     frame.bar:SetPoint("BOTTOMRIGHT", frame, "BOTTOMRIGHT", 0, 0)
-    frame.bar:SetStatusBarTexture(pfUI.media["img:bar"])
-    frame.bar:SetStatusBarColor(color.r, color.g, color.b, color.a)
+    -- frame.bar:SetStatusBarTexture(pfUI.media["img:bar"])
+    -- frame.bar:SetStatusBarColor(color.r, color.g, color.b, 1)
 
     frame.text = frame.bar:CreateFontString("Status", "DIALOG", "GameFontNormal")
-    frame.text:ClearAllPoints()
-    frame.text:SetPoint("TOPLEFT", frame.bar, "TOPLEFT", 3, 0)
-    frame.text:SetPoint("BOTTOMRIGHT", frame.bar, "BOTTOMRIGHT", -3, 0)
-    frame.text:SetNonSpaceWrap(false)
-    frame.text:SetFontObject(GameFontWhite)
-    frame.text:SetFont(font, C.global.font_size)
-    frame.text:SetTextColor(textcolor.r,textcolor.g,textcolor.b,1)
-    frame.text:SetJustifyH("LEFT")
-
-    frame.time = frame.bar:CreateFontString("Status", "DIALOG", "GameFontNormal")
-    frame.time:ClearAllPoints()
-    frame.time:SetPoint("TOPLEFT", frame.bar, "TOPLEFT", 3, 0)
-    frame.time:SetPoint("BOTTOMRIGHT", frame.bar, "BOTTOMRIGHT", -3, 0)
-    frame.time:SetNonSpaceWrap(false)
-    frame.time:SetFontObject(GameFontWhite)
-    frame.time:SetFont(font, C.global.font_size)
-    frame.time:SetTextColor(1,1,1,1)
-    frame.time:SetJustifyH("RIGHT")
+    -- frame.text:ClearAllPoints()
+    -- frame.text:SetPoint("TOPLEFT", frame.bar, "TOPLEFT", 3, 0)
+    -- frame.text:SetPoint("BOTTOMRIGHT", frame.bar, "BOTTOMRIGHT", -3, 0)
+    -- frame.text:SetNonSpaceWrap(false)
+    -- frame.text:SetFontObject(GameFontWhite)
+    -- frame.text:SetFont(font, C.global.font_size)
+    -- frame.text:SetTextColor(textcolor.r,textcolor.g,textcolor.b,1)
+    -- frame.text:SetJustifyH("LEFT")
 
     frame.icon = frame:CreateTexture(nil, "OVERLAY")
     frame.icon:SetWidth(height)
@@ -201,11 +192,19 @@ pfUI:RegisterModule("buffwatch", "vanilla:tbc", function ()
     frame.icon:SetPoint("LEFT", frame, "LEFT", 0, 0)
     frame.icon:SetTexCoord(.07,.93,.07,.93)
 
+    frame.time = frame.bar:CreateFontString("Status", "DIALOG", "GameFontNormal")   
+    frame.time:SetPoint("TOPLEFT", frame.icon, "TOPLEFT", 0, 0)
+    frame.time:SetPoint("BOTTOMRIGHT", frame.icon, "BOTTOMRIGHT", 0, 0)
+    frame.time:SetNonSpaceWrap(false)
+    frame.time:SetFontObject(GameFontWhite)
+    frame.time:SetFont(font, C.global.font_size-1,"OUTLINE")
+    frame.time:SetTextColor(1,1,1,1)
+
     frame.stacks = frame.bar:CreateFontString("Status", "DIALOG", "GameFontWhite")
-    frame.stacks:SetFont(font, C.global.font_size, "OUTLINE")
+    frame.stacks:SetFont(font, C.global.font_size-4, "OUTLINE")
     frame.stacks:SetAllPoints(frame.icon)
-    frame.stacks:SetJustifyH("CENTER")
-    frame.stacks:SetJustifyV("CENTER")
+    frame.stacks:SetJustifyH("RIGHT")
+    frame.stacks:SetJustifyV("BOTTOM")
 
     frame.parent = parent
     frame:SetScript("OnUpdate", StatusBarOnUpdate)
@@ -297,7 +296,7 @@ pfUI:RegisterModule("buffwatch", "vanilla:tbc", function ()
 
           -- set auto background color
           if frame.config.dtypebg == "1" then
-            frame.bars[bar].bar:SetStatusBarColor(r,g,b,1)
+            -- frame.bars[bar].bar:SetStatusBarColor(r,g,b,1)
           end
 
           -- set auto border color
@@ -415,8 +414,10 @@ pfUI:RegisterModule("buffwatch", "vanilla:tbc", function ()
     local r, g, b, a = strsplit(",", config.color)
     local br, bg, bb, ba = strsplit(",", config.bordercolor)
     local tr, tg, tb, ta = strsplit(",", config.textcolor)
-
+    local w1 = config.width == "-1" and config.height or config.width
+    
     pfUI.uf.player.buffbar:SetWidth(config.width == "-1" and C.unitframes.player.width or config.width)
+    pfUI.uf.player.buffbar:SetWidth(w1)
     pfUI.uf.player.buffbar:SetHeight(config.height)
     pfUI.uf.player.buffbar.threshold = tonumber(config.threshold)
     pfUI.uf.player.buffbar.config = config
@@ -442,8 +443,10 @@ pfUI:RegisterModule("buffwatch", "vanilla:tbc", function ()
     local br, bg, bb, ba = strsplit(",", config.bordercolor)
     local tr, tg, tb, ta = strsplit(",", config.textcolor)
 
+    local w1 = config.width == "-1" and config.height or config.width
     pfUI.uf.player.debuffbar = CreateBuffBarFrame("Player", "HARMFUL")
-    pfUI.uf.player.debuffbar:SetWidth(config.width == "-1" and C.unitframes.player.width or config.width)
+    -- pfUI.uf.player.debuffbar:SetWidth(config.width == "-1" and C.unitframes.player.width or config.width)
+    pfUI.uf.player.debuffbar:SetWidth(w1)
     pfUI.uf.player.debuffbar:SetHeight(config.height)
     pfUI.uf.player.debuffbar.threshold = tonumber(config.threshold)
     pfUI.uf.player.debuffbar.config = config
@@ -470,8 +473,10 @@ pfUI:RegisterModule("buffwatch", "vanilla:tbc", function ()
     local br, bg, bb, ba = strsplit(",", config.bordercolor)
     local tr, tg, tb, ta = strsplit(",", config.textcolor)
 
+    local w1 = config.width == "-1" and config.height or config.width
     pfUI.uf.target.debuffbar = CreateBuffBarFrame("Target", "HARMFUL")
-    pfUI.uf.target.debuffbar:SetWidth(config.width == "-1" and C.unitframes.target.width or config.width)
+    -- pfUI.uf.target.debuffbar:SetWidth(config.width == "-1" and C.unitframes.target.width or config.width)
+    pfUI.uf.target.debuffbar:SetWidth(w1)
     pfUI.uf.target.debuffbar:SetHeight(config.height)
     pfUI.uf.target.debuffbar.config = config
     pfUI.uf.target.debuffbar.buffcmp = config.sort == "asc" and asc or desc
