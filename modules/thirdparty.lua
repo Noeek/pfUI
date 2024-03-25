@@ -133,7 +133,7 @@ pfUI:RegisterModule("thirdparty", "vanilla:tbc", function()
         pfUI.bag.right.sort.texture:SetPoint("TOPLEFT", pfUI.bag.right.sort, "TOPLEFT", 2, -2)
         pfUI.bag.right.sort.texture:SetPoint("BOTTOMRIGHT", pfUI.bag.right.sort, "BOTTOMRIGHT", -2, 2)
         pfUI.bag.right.sort.texture:SetVertexColor(.25,.25,.25,1)
-
+        pfUI.bag.right.sort:RegisterForClicks('LeftButtonUp', 'RightButtonUp')
         pfUI.bag.right.sort:SetScript("OnClick", bag)
 
         pfUI.bag.right.sort:SetScript("OnEnter", function ()
@@ -172,7 +172,7 @@ pfUI:RegisterModule("thirdparty", "vanilla:tbc", function()
         pfUI.bag.left.sort.texture:SetPoint("TOPLEFT", pfUI.bag.left.sort, "TOPLEFT", 2, -2)
         pfUI.bag.left.sort.texture:SetPoint("BOTTOMRIGHT", pfUI.bag.left.sort, "BOTTOMRIGHT", -2, 2)
         pfUI.bag.left.sort.texture:SetVertexColor(.25,.25,.25,1)
-
+        pfUI.bag.left.sort:RegisterForClicks('LeftButtonUp', 'RightButtonUp')
         pfUI.bag.left.sort:SetScript("OnClick", bank)
 
         pfUI.bag.left.sort:SetScript("OnEnter", function ()

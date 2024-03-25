@@ -806,23 +806,28 @@ pfUI:RegisterModule("thirdparty-vanilla", "vanilla", function()
     sort:SetScript("OnEvent", function()
       this:UnregisterAllEvents()
 
+      local addNote = "|r|nRight-click for reverse sort"
       pfUI.thirdparty.RegisterBagSort("SortBags",
         function()
+          local sort = arg1 == "LeftButton"
+          SetSortBagsRightToLeft(sort)
           SortBags()
         end,
         function()
           GameTooltip:SetOwner(this, "ANCHOR_RIGHT")
           GameTooltip:SetText(GetAddOnMetadata("SortBags","Title"))
-          GameTooltip:AddLine(GetAddOnMetadata("SortBags","Notes"),1,1,1)
+          GameTooltip:AddLine(GetAddOnMetadata("SortBags","Notes")..addNote,1,1,1)
           GameTooltip:Show()
         end,
         function()
+          local sort = arg1 == "LeftButton"
+          SetSortBagsRightToLeft(sort)
           SortBankBags()
         end,
         function()
           GameTooltip:SetOwner(this, "ANCHOR_RIGHT")
           GameTooltip:SetText(GetAddOnMetadata("SortBags","Title"))
-          GameTooltip:AddLine(GetAddOnMetadata("SortBags","Notes"),1,1,1)
+          GameTooltip:AddLine(GetAddOnMetadata("SortBags","Notes")..addNote,1,1,1)
           GameTooltip:Show()
         end)
     end)
