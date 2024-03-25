@@ -44,7 +44,8 @@ pfUI:RegisterModule("autoshift", "vanilla", function ()
     "^速度提高(.+)%%",
     -- turtle-wow
     "speed based on", "Slow and steady...", "Riding",
-    "根据骑术技能提高速度。", "又慢又稳......",
+    -- "根据骑术技能提高速度。", "又慢又稳......", 这个是老版本翻译错误
+    "根据您的骑行技能提高速度。", "又慢又稳......", -- 改成这样
   }
 
   pfUI.autoshift.shapeshifts = {
