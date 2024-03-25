@@ -326,6 +326,16 @@ pfUI:RegisterModule("nameplates", "vanilla:tbc", function ()
     nameplate.totem.icon:SetAllPoints()
     CreateBackdrop(nameplate.totem)
 
+    --noeek edit 
+    if nameplate.targetIndicator == nil then
+      nameplate.targetIndicator = nameplate:CreateTexture(nil, "OVERLAY")      
+      nameplate.targetIndicator:SetTexture(pfUI.media["img:reticule"])
+      nameplate.targetIndicator:SetWidth(50)
+      nameplate.targetIndicator:SetHeight(50)
+      nameplate.targetIndicator:Hide()      
+    end    
+    --end----edit
+
     do -- debuffs
       nameplate.debuffs = {}
       CreateDebuffIcon(nameplate, 1)
@@ -473,6 +483,10 @@ pfUI:RegisterModule("nameplates", "vanilla:tbc", function ()
     nameplate.castbar.icon:SetWidth(C.nameplates.heightcast + default_border*3 + C.nameplates.heighthealth)
     CreateBackdrop(nameplate.castbar.icon, default_border)
 
+    --noeek edit
+    nameplate.targetIndicator:SetPoint("CENTER", nameplate.health, "CENTER", 0, 50)   
+    --end edit
+
     nameplates:OnDataChanged(nameplate)
   end
 
@@ -558,6 +572,10 @@ pfUI:RegisterModule("nameplates", "vanilla:tbc", function ()
     else
       plate.health.backdrop:SetBackdropBorderColor(er,eg,eb,ea)
     end
+
+    --noeek edit
+    if target then plate.targetIndicator:Show() else plate.targetIndicator:Hide() end
+    --end edit
 
     -- hide frames according to the configuration
     local TotemIcon = TotemPlate(name)
