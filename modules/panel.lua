@@ -277,13 +277,16 @@ pfUI:RegisterModule("panel", "vanilla:tbc", function()
         GameTooltip:AddDoubleLine(T["Login"] .. ":", CreateGoldString(pfUI.panel.initMoney))
         GameTooltip:AddDoubleLine(T["Now"] .. ":", CreateGoldString(GetMoney()))
         GameTooltip:AddDoubleLine("|cffffffff","")
+        local totalMoney = 0
         for name, gold in pairs(pfUI_cache["gold"][GetRealmName()]) do
+          totalMoney = totalMoney + gold
           if name ~= UnitName("player") then
             GameTooltip:AddDoubleLine(name .. ":", CreateGoldString(gold))
           end
         end
         GameTooltip:AddDoubleLine("|cffffffff","")
         GameTooltip:AddDoubleLine(T["This Session"] .. ":", dmod .. CreateGoldString(math.abs(pfUI.panel.diffMoney)))
+        GameTooltip:AddDoubleLine(T["TotalMoney"] .. ":", CreateGoldString(math.abs(totalMoney)))
         GameTooltip:Show()
       end
       widget:SetScript("OnEvent", function()
