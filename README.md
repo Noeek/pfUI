@@ -2,14 +2,14 @@
 #### 1. right click to reverse sort bags.     添加右击反向整理背包功能
 #### 2. turtle wow dismount bug fix.      乌龟服自动下马修复（纠正翻译）
 #### 3.sum the total money.     显示账户角色所有金币
-<img src="./imgSample/moneytotal.png" width=20%>
+<img src="./imgSample/moneytotal.png" width=22%>
 
 #### 4. add arrow icon for the target.     目标姓名版增加箭头标识
- <img src="./imgSample/targetIcon.png" width=54%>
+ <img src="./imgSample/targetIcon.png" width=58%>
 
 #### 5. buff/debuff progressbar change to icon. buff/debuff 进度条改为图标
 
- <img src="./imgSample/before.png" width=25%>before   <img src="./imgSample/after.png" width=25%> after
+ <img src="./imgSample/before.png" width=26%>before   <img src="./imgSample/after.png" width=26%> after
 
 # 安装
 1. **[下载链接](https://github.com/Noeek/pfUI/archive/refs/heads/master.zip)** （总是最新）
