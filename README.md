@@ -1,3 +1,23 @@
+# pfUI 功能优化
+#### 1. right click to reverse sort bags.     添加右击反向整理背包功能
+#### 2. turtle wow dismount bug fix.      乌龟服自动下马修复（纠正翻译）
+#### 3.sum the total money.     显示账户角色所有金币
+<img src="./imgSample/moneytotal.png" width=20%>
+
+#### 4. add arrow icon for the target.     目标姓名版增加箭头标识
+ <img src="./imgSample/targetIcon.png" width=54%>
+
+#### 5. buff/debuff progressbar change to icon. buff/debuff 进度条改为图标
+
+ <img src="./imgSample/before.png" width=25%>before   <img src="./imgSample/after.png" width=25%> after
+
+# 安装
+1. **[下载链接](https://github.com/Noeek/pfUI/archive/refs/heads/master.zip)** （总是最新）
+2. 解压zip文件
+3. 更改文件名为 `pfUI`
+4. 移动插件文件夹至 `<WoW install>/Interface/AddOns/`
+5. 重启游戏.
+
 # pfUI
 
 An AddOn for World of Warcraft: Vanilla (1.12.1) and The Burning Crusade (2.4.3), which aims to be a full replacement for the original interface. The design is inspired by several screenshots I've seen from TukUI, ElvUI and others. This addon delivers modern features and a minimalistic style that's easy to use right from the start. It is entirely written from scratch without any inclusion of third-party addons or libraries.
@@ -14,14 +34,14 @@ This is **not** an addon-pack like [ShaguUI](http://shagu.org/ShaguUI/), however
 <img src="https://raw.githubusercontent.com/shagu/ShaguAddons/master/_img/pfUI/maraudon.jpg" width="48.5%">
 
 ## Installation (Vanilla)
-1. Download **[Latest Version](https://github.com/shagu/pfUI/archive/master.zip)**
+1. Download **[Latest Version](https://github.com/Noeek/pfUI/archive/refs/heads/master.zip)**
 2. Unpack the Zip file
 3. Rename the folder "pfUI-master" to "pfUI"
 4. Copy "pfUI" into Wow-Directory\Interface\AddOns
 5. Restart Wow
 
 ## Installation (The Burning Crusade)
-1. Download **[Latest Version](https://github.com/shagu/pfUI/archive/master.zip)**
+1. Download **[Latest Version](https://github.com/Noeek/pfUI/archive/refs/heads/master.zip)**
 2. Unpack the Zip file
 3. Rename the folder "pfUI-master" to "pfUI-tbc"
 4. Copy "pfUI-tbc" into Wow-Directory\Interface\AddOns
